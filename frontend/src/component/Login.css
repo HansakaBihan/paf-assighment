@@ -1,0 +1,80 @@
+.login-page-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin-top: 50px; /* Adjust margin from the top */
+  margin-left: 20px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  padding-right: 30px;
+
+}
+
+
+
+.form-container {
+  flex: 1;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9; /* Light gray background */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.image-container {
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden; /* Hide overflowing image parts */
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.login-btn {
+  width: 100% !important;
+  padding: 10px 0 !important;
+  font-size: 16px !important;
+  background-color: #000000 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+}
+
+.login-heading {
+  text-align: center; /* Center the heading */
+  margin-bottom: 20px; /* Add some spacing below the heading */
+  color: #333; /* Darken the text color */
+}
+
+
+.signup-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.signup-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,274 @@
+/* profile.css */
+
+/* Container styles */
+.profile-container {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header styles */
+.header-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.back-icon {
+  font-size: 24px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1E0443;
+}
+
+/* Cover image styles */
+.cover-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* Profile info section styles */
+.profile-info-section {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.profile-header {
+  margin-right: 20px;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border: 4px solid white;
+}
+
+.edit-profile-button {
+  border-radius: 20px;
+  background-color: #1E0443;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-profile-button:hover {
+  background-color: #3F0E40;
+}
+
+/* Profile details styles */
+.profile-details {
+  flex: 1;
+}
+
+.bio {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.additional-details {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.detail p {
+  margin-left: 5px;
+}
+
+/* Follower count styles */
+.follower-count {
+  margin-top: 10px;
+}
+
+.count {
+  margin-right: 20px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+/* Tabs section styles */
+.tabs-section {
+  margin-top: 20px;
+}
+
+.tab-list {
+  display: flex;
+  list-style-type: none;
+  padding: 0;a/* profile.css */
+
+  /* Container styles */
+  .profile-container {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header styles */
+  .header-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .back-icon {
+    font-size: 24px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1E0443;
+  }
+  
+  /* Cover image styles */
+  .cover-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  /* Profile info section styles */
+  .profile-info-section {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .profile-header {
+    margin-right: 20px;
+  }
+  
+  .profile-avatar {
+    width: 120px;
+    height: 120px;
+    border: 4px solid white;
+    border-radius: 50%;
+  }
+  
+  .edit-profile-button {
+    border-radius: 20px;
+    background-color: #1E0443;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .edit-profile-button:hover {
+    background-color: #3F0E40;
+  }
+  
+  /* Profile details styles */
+  .profile-details {
+    flex: 1;
+  }
+  
+  .bio {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .additional-details {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .detail {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+  
+  .detail p {
+    margin-left: 5px;
+  }
+  
+  /* Follower count styles */
+  .follower-count {
+    margin-top: 10px;
+  }
+  
+  .count {
+    margin-right: 20px;
+  }
+  
+  .label {
+    font-weight: bold;
+  }
+  
+  /* Tabs section styles */
+  .tabs-section {
+    margin-top: 20px;
+  }
+  
+  .tab-list {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .MuiTabs-indicator {
+    background-color: #1E0443;
+  }
+  
+  .MuiTab-root {
+    font-weight: bold;
+    color: #1E0443;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .Mui-selected {
+    color: #1E0443;
+    background-color: #BFAADE;
+  }
+  
+  margin: 0;
+}
+
+.MuiTabs-indicator {
+  background-color: #1E0443;
+}
+
+.MuiTab-root {
+  font-weight: bold;
+  color: #1E0443;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.Mui-selected {
+  color: #1E0443;
+  background-color: #BFAADE;
+}

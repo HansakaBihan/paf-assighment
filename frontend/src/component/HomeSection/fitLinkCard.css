@@ -1,0 +1,96 @@
+/* fitLinkCard.css */
+
+.fitlink-card {
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-infos {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile-images {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.handle {
+  color: #757575;
+}
+
+.more-icon-button {
+  background-color: transparent;
+}
+
+.more-icon {
+  color: #6c08cb;
+  width: 35px;
+  height: 35px;
+}
+
+.post-info {
+  margin-top: 10px;
+}
+
+.post-title {
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.post-image {
+  width: 100%;
+  border: 1px solid #bdbdbd;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.interaction {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.comments,
+.likes {
+  display: flex;
+  align-items: center;
+}
+
+.comment-icon {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.like-icon {
+  cursor: pointer;
+}
+
+.liked {
+  color: #ff4081;
+}
+
+.liked-icon {
+  color: #ff4081;
+}
+
+.not-liked-icon {
+  color: #757575;
+}

@@ -1,0 +1,41 @@
+.view-post-container {
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.modal-header {
+  /* Your styles for the modal header */
+}
+
+.close-button {
+  /* Your styles for the close button */
+}
+
+.post-content {
+  /* Your styles for the post content */
+}
+
+.media-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.media-item {
+  margin-bottom: 20px;
+}
+
+.media-item img,
+.media-item video {
+  max-width: 100%;
+  height: auto;
+}
+
+.view-media-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #333;
+  margin-top: 5px;
+}

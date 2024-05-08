@@ -1,0 +1,54 @@
+.WorkoutStatusCard {
+  display: flex;
+  gap: 30px;
+}
+
+.WorkoutStatusCard .img-sec img {
+  height: 40px;
+  width: auto;
+}
+
+.WorkoutStatusCard .f-sec {
+  display: flex;
+  gap: 130px;
+  align-items: center;
+}
+
+.WorkoutStatusCard .tt-img img {
+  height: 70px;
+  width: auto;
+}
+
+.WorkoutStatusCard .tt-sec {
+  display: flex;
+  gap: 80px;
+  margin-top: 20px;
+}
+
+.WorkoutStatusCard .t-sec {
+  border: 1px solid black;
+  padding: 30px;
+  border-radius: 9px;
+}
+
+.WorkoutStatusCard .detail-sec {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.WorkoutStatusCard .userName {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+ .workoutname {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.WorkoutStatusCard .workoutCount {
+  font-size: 20px;
+  font-weight: bold;
+}
