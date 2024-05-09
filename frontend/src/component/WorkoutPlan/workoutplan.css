@@ -50,7 +50,7 @@
 
   /* mealplan.css */
 
-.PlanSharing {
+.WorkoutPlanSharing {
   padding: 20px;
 }
 
@@ -112,4 +112,59 @@
 
 .submit-btn:hover {
   background-color: #1b5e39;
+}
+
+.model, .overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(49,49,49,0.8);
+}
+.model-content {
+  color: #000000;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #5ea051;
+  padding: 14px 28px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+}
+
+.close-model {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 7px;
+}
+
+.yes-btn{
+  background-color: #000000;
+  color: white;
+  padding: 10px 20px;
+  margin: 5px 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+}
+.no-btn{
+  background-color: #000000;
+  color: white;
+  padding: 10px 20px;
+  margin: 5px 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
 }

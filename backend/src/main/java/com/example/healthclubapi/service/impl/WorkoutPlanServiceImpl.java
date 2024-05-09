@@ -20,6 +20,7 @@ public class WorkoutPlanServiceImpl implements WorkoutPlanService {
         WorkoutPlan workoutPlan = new WorkoutPlan();
         // Map DTO to entity (workoutPlan)
         // You can use a mapper like MapStruct or manually map the fields
+        //workoutPlan.setId(workoutPlanDTO.getId());
         workoutPlan.setName(workoutPlanDTO.getName());
         workoutPlan.setAge(workoutPlanDTO.getAge());
         workoutPlan.setWeight(workoutPlanDTO.getWeight());
@@ -40,9 +41,18 @@ public class WorkoutPlanServiceImpl implements WorkoutPlanService {
     }
 
     @Override
-    public WorkoutPlan updateWorkoutPlan(Long id, WorkoutPlanDTO workoutPlanDTO) {
-        // Similar to createWorkoutPlan, but you need to retrieve the existing workoutPlan by id and update its fields
-        return null;
+    public WorkoutPlan updateWorkoutPlan(WorkoutPlanDTO workoutPlanDTO) {
+        WorkoutPlan workoutPlan = new WorkoutPlan();
+        // Map DTO to entity (workoutPlan)
+        // You can use a mapper like MapStruct or manually map the fields
+        workoutPlan.setId(workoutPlanDTO.getId());
+        workoutPlan.setName(workoutPlanDTO.getName());
+        workoutPlan.setAge(workoutPlanDTO.getAge());
+        workoutPlan.setWeight(workoutPlanDTO.getWeight());
+        workoutPlan.setHeight(workoutPlanDTO.getHeight());
+        workoutPlan.setExercises(workoutPlanDTO.getExercises());
+        workoutPlanRepository.save(workoutPlan);
+        return workoutPlan;
     }
 
     @Override

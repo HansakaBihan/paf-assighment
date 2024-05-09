@@ -12,7 +12,7 @@ public interface WorkoutPlanService {
 
     WorkoutPlan getWorkoutPlanById(Long id);
 
-    WorkoutPlan updateWorkoutPlan(Long id, WorkoutPlanDTO workoutPlanDTO);
+    WorkoutPlan updateWorkoutPlan(WorkoutPlanDTO workoutPlanDTO);
 
     void deleteWorkoutPlan(Long id);
 

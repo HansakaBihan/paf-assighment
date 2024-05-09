@@ -12,6 +12,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/workout-plans")
+@CrossOrigin(origins = "http://localhost:3000")
+
 public class WorkoutPlanController {
 
     @Autowired
@@ -20,7 +22,7 @@ public class WorkoutPlanController {
     @PostMapping("/workout/save")
     public ResponseEntity<String> saveWorkoutPlan(@RequestBody WorkoutPlanDTO workoutPlanDTO) {
         try {
-            workoutPlanService.saveWorkoutPlan(workoutPlanDTO);
+            workoutPlanService.createWorkoutPlan(workoutPlanDTO);
             return ResponseEntity.ok("Workout plan saved successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error saving workout plan");
@@ -49,9 +51,9 @@ public class WorkoutPlanController {
     }
 
 
-    @PutMapping("/{id}")
-    public ResponseEntity<WorkoutPlan> updateWorkoutPlan(@PathVariable Long id, @RequestBody WorkoutPlanDTO workoutPlanDTO) {
-        WorkoutPlan updatedWorkoutPlan = workoutPlanService.updateWorkoutPlan(id, workoutPlanDTO);
+    @PutMapping("/update")
+    public ResponseEntity<WorkoutPlan> updateWorkoutPlan(@RequestBody WorkoutPlanDTO workoutPlanDTO) {
+        WorkoutPlan updatedWorkoutPlan = workoutPlanService.updateWorkoutPlan(workoutPlanDTO);
         return ResponseEntity.ok(updatedWorkoutPlan);
     }
 

@@ -173,11 +173,18 @@ const WorkoutForm = () => {
   const [age, setAge] = useState('');
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
-  const [exercises, setExercises] = useState([{ exercise: '', reps: '', sets: '' }]);
+  const [exercises, setExercises] = useState([{ name: '', reps: '', sets: '' }]);
 
   const handleAddExercise = () => {
-    setExercises([...exercises, { exercise: '', reps: '', sets: '' }]);
+    setExercises([...exercises, { name: '', reps: '', sets: '' }]);
+
+   
   };
+  
+  const [model,setModel] = useState(false);
+  const toggleModel = () =>{
+    setModel(!model)
+  }
   const navigate = useNavigate();
 
   const handleBack = () => navigate(-1);
@@ -196,7 +203,11 @@ const WorkoutForm = () => {
   };
 
   const handleSaveWorkout = () => {
+<<<<<<< Updated upstream
     axios.post('http://localhost:8070/api/workout-plans/api/workout/save', {
+=======
+    axios.post('http://localhost:8080/api/workout-plans/workout/save', {
+>>>>>>> Stashed changes
       name,
       age,
       weight,
@@ -204,7 +215,7 @@ const WorkoutForm = () => {
       exercises
     })
     .then(response => {
-      console.log('Workout plan saved:', response.data);
+      alert('Workout plan saved Successfully');
       // Optionally, reset form fields or show a success message
     })
     .catch(error => {
@@ -253,7 +264,7 @@ const WorkoutForm = () => {
     exercises.forEach((exercise, index) => {
       doc.setFillColor(rowColor ? 255 : 240, 240, 240);
       doc.rect(20, startY, 170, 10, 'F');
-      doc.text(30, startY + 5, exercise.exercise);
+      doc.text(30, startY + 5, exercise.name);
       doc.text(80, startY + 5, exercise.reps);
       doc.text(120, startY + 5, exercise.sets);
       startY += 10;
@@ -266,7 +277,7 @@ const WorkoutForm = () => {
   
 
   return (
-    <div className="PlanSharing">
+    <div className="WorkoutPlanSharing">
       <KeyboardBackspaceIcon
           className="cursor-pointer"
           onClick={handleBack}
@@ -335,8 +346,8 @@ const WorkoutForm = () => {
                     <td>
                       <input
                         type="text"
-                        value={exercise.exercise}
-                        onChange={(e) => handleExerciseChange(index, 'exercise', e.target.value)}
+                        value={exercise.name}
+                        onChange={(e) => handleExerciseChange(index, 'name', e.target.value)}
                         className="form-input"
                       />
                     </td>
@@ -370,10 +381,34 @@ const WorkoutForm = () => {
             </button>
           </div>
           <div>
+<<<<<<< Updated upstream
             <button type="button" onClick={handleSaveWorkout} className="submit-btn">Save Workout Plan</button>
             <button type="button" onClick={handleDownloadPDF} className="submit-btn">Download as PDF</button>
+=======
+            <button type="button" onClick={toggleModel} className="btn-submit">Share</button>
+            <button type="button" onClick={handleSaveWorkout} className="btn-submit">Save</button>
+            <button type="button" onClick={handleDownloadPDF} className="btn-submit">Print</button>
+>>>>>>> Stashed changes
           </div>
         </form>
+                {model && (
+                  <div className='model'>
+                  <div className='overlay'>
+                    <div className="model-content">
+                      <h4>
+                        Are You Sure You want to share this Workout Plan
+                      </h4>
+                      <button className="yes-btn">
+                        Yes
+                      </button>
+                      <button className="no-btn" onClick={toggleModel}>
+                        No
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                )}
+
       </div>
     </div>
   );

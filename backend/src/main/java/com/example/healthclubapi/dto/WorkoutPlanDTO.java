@@ -6,6 +6,7 @@ import java.util.List;
 
 @Data
 public class WorkoutPlanDTO {
+    private long id;
     private String name;
     private int age;
     private double weight;
