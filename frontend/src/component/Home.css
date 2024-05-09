@@ -47,6 +47,14 @@
   margin-bottom: 10px;
 }
 
+/* Home.css */
+
+.shared-pics-section p {
+  text-align: center;
+  margin-right: 150px;
+}
+
+
 .fitness-quote-banner p {
   margin: 0;
   font-size: 16px;
