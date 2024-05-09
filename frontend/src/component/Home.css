@@ -1,12 +1,6 @@
 /* Update Home.css */
 
-/* General styles */
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #fafafa;
-}
+
 
 
 /*home container*/
@@ -92,6 +86,14 @@ h1 {
   background-color: #4CAF50;
   color: white;
 }
+.shared-pic video {
+  max-width: 100%; /* Ensure the video doesn't exceed its container */
+  width: 100%; /* Make the video responsive */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
 
 .share-meal-plan {
   background-color: #FFC107;

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './Home.css';
 import girlPic from '../assets/girlpic.jpg'; // Import the girlpic image
 import Sidebar from './Sidebar';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
+ // Import Link from react-router-dom
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -31,19 +32,25 @@ const Home = () => {
         <h2>Welcome to Health Club Fitness</h2>
         <p>Discover new workouts, healthy recipes, and lifestyle tips.</p>
       </div>
-      <Sidebar /> 
+      <Sidebar />
 
       <section className="shared-pics-section">
         <div className="shared-pics-container">
           {posts.map(post => (
             <div key={post.id} className="shared-pic">
-              <img src={`http://localhost:8080/uploads/${post.imagePath1}`} alt="Image 1" />
-              <img src={`http://localhost:8080/uploads/${post.imagePath2}`} alt="Image 2" />
-              <img src={`http://localhost:8080/uploads/${post.imagePath3}`} alt="Image 3" />
+              <div className="image-container">
+                <img src={`http://localhost:8080/uploads/${post.imagePath1}`} alt="Image 1" />
+                <img src={`http://localhost:8080/uploads/${post.imagePath2}`} alt="Image 2" />
+                <img src={`http://localhost:8080/uploads/${post.imagePath3}`} alt="Image 3" />
+              </div>
               <video controls>
                 <source src={`http://localhost:8080/uploads/${post.videoPath}`} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
+              <div className="interaction">
+                <button><i className="fas fa-heart"></i> Like</button>
+                <button><i className="fas fa-comment"></i> Comment</button>
+              </div>
               <p>{post.description}</p>
             </div>
           ))}
@@ -55,7 +62,7 @@ const Home = () => {
           <div className="profile-info">
             <img src={girlPic} alt="Profile Pic" />
             <h3>Shanon Fernando</h3>
-            <p>Inspired builder </p>
+            <p>Inspired builder</p>
             <div className="profile-stats">
               <div className="stat">
                 <i className="fas fa-user-friends"></i>
@@ -77,8 +84,7 @@ const Home = () => {
             </li>
           </ul>
         </div>
-      </section> 
-
+      </section>
 
       <footer>
         <p>&copy; 2024 Health Club. All rights reserved.</p>
@@ -88,9 +94,3 @@ const Home = () => {
 }
 
 export default Home;
-
-
-
-
-
- 
