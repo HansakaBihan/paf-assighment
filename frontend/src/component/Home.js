@@ -3,10 +3,20 @@ import './Home.css';
 import girlPic from '../assets/girlpic.jpg'; // Import the girlpic image
 import Sidebar from './Sidebar';
 import { Link } from 'react-router-dom';
- // Import Link from react-router-dom
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import IconButton from '@material-ui/core/IconButton';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import EditPost from './EditPost'; // Import EditPost component
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [editPostId, setEditPostId] = useState(null); // State variable to store the post ID for editing
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false); // State variable to manage the visibility of the edit modal
 
   useEffect(() => {
     // Fetch posts from the backend API
@@ -26,6 +36,48 @@ const Home = () => {
     }
   };
 
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleDeleteFitLink = async (postId) => {
+    try {
+      const response = await fetch(`http://localhost:8080/post/posts/${postId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Failed to delete post');
+      }
+      // Handle successful deletion
+      console.log('Post deleted successfully');
+      // Refresh the page
+      window.location.reload();
+    } catch (error) {
+      console.error('Error deleting post:', error);
+    }
+  };
+
+  const handleEditFitLink = (postId) => {
+    setEditPostId(postId); // Set the post ID for editing
+    setIsEditModalOpen(true); // Open the edit modal
+  };
+
+  // Slider settings
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
+
   return (
     <div className="home-container">
       <div className="fitness-quote-banner">
@@ -34,28 +86,55 @@ const Home = () => {
       </div>
       <Sidebar />
 
-      <section className="shared-pics-section">
-        <div className="shared-pics-container">
-          {posts.map(post => (
-            <div key={post.id} className="shared-pic">
-              <div className="image-container">
-                <img src={`http://localhost:8080/uploads/${post.imagePath1}`} alt="Image 1" />
-                <img src={`http://localhost:8080/uploads/${post.imagePath2}`} alt="Image 2" />
-                <img src={`http://localhost:8080/uploads/${post.imagePath3}`} alt="Image 3" />
-              </div>
-              <video controls>
+      {posts.map(post => (
+        <section key={post.id} className="shared-pics-section">
+          <div className="icon-container">
+            <IconButton
+              aria-controls="post-menu"
+              aria-haspopup="true"
+              onClick={handleClick}
+              className="icon"
+            >
+              <MoreVertIcon />
+            </IconButton>
+            <Menu
+              id="post-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={() => handleDeleteFitLink(post.id)}>Delete</MenuItem>
+              <MenuItem onClick={() => handleEditFitLink(post.id)}>Edit</MenuItem> {/* Pass the post ID */}
+            </Menu>
+          </div>
+          <Slider {...sliderSettings}>
+            <div>
+              <img src={`http://localhost:8080/uploads/${post.imagePath1}`} alt="Image 1" className="landscape-image" />
+            </div>
+            <div>
+              <img src={`http://localhost:8080/uploads/${post.imagePath2}`} alt="Image 2" className="landscape-image" />
+            </div>
+            <div>
+              <img src={`http://localhost:8080/uploads/${post.imagePath3}`} alt="Image 3" className="landscape-image" />
+            </div>
+            <div>
+              <video controls className="landscape-video">
                 <source src={`http://localhost:8080/uploads/${post.videoPath}`} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <div className="interaction">
-                <button><i className="fas fa-heart"></i> Like</button>
-                <button><i className="fas fa-comment"></i> Comment</button>
-              </div>
-              <p>{post.description}</p>
             </div>
-          ))}
-        </div>
-      </section>
+          </Slider>
+          <div className="interaction">
+            <button><i className="fas fa-heart"></i> Like</button>
+            <button><i className="fas fa-comment"></i> Comment</button>
+          </div>
+          <p>{post.description}</p>
+        </section>
+      ))}
+
+      {/* Render EditPost component as a modal */}
+      {isEditModalOpen && <EditPost postId={editPostId} closeModal={() => setIsEditModalOpen(false)} />}
 
       <section className="profile-section">
         <Link to="/profile">
