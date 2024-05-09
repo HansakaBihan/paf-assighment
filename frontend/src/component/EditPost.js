@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './EditPost.css'; // Import CSS file for styling
 
-const EditPost = ({ postId }) => {
+const EditPost = ({ postId, closeModal, onEditSuccess }) => {
   const [description, setDescription] = useState('');
   const [images, setImages] = useState([]);
   const [video, setVideo] = useState('');
@@ -78,6 +78,10 @@ const EditPost = ({ postId }) => {
           draggable: true,
           progress: undefined,
         });
+        // Call the onEditSuccess callback to indicate successful edit
+        onEditSuccess();
+        // Close the modal
+        closeModal();
       } else {
         console.error('Failed to update post:', response.statusText);
       }

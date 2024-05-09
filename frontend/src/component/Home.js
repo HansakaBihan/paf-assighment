@@ -1,3 +1,5 @@
+// Home.js
+
 import React, { useState, useEffect } from 'react';
 import './Home.css';
 import girlPic from '../assets/girlpic.jpg'; // Import the girlpic image
@@ -69,6 +71,12 @@ const Home = () => {
     setIsEditModalOpen(true); // Open the edit modal
   };
 
+  const handleEditSuccess = () => {
+    // Perform any actions needed after successful edit
+    // For example, trigger a page refresh
+    window.location.reload();
+  };
+
   // Slider settings
   const sliderSettings = {
     dots: true,
@@ -134,7 +142,13 @@ const Home = () => {
       ))}
 
       {/* Render EditPost component as a modal */}
-      {isEditModalOpen && <EditPost postId={editPostId} closeModal={() => setIsEditModalOpen(false)} />}
+      {isEditModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <EditPost postId={editPostId} closeModal={() => setIsEditModalOpen(false)} onEditSuccess={handleEditSuccess} />
+          </div>
+        </div>
+      )}
 
       <section className="profile-section">
         <Link to="/profile">
