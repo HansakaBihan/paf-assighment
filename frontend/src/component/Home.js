@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import './Home.css';
 import girlPic from '../assets/girlpic.jpg'; // Import the girlpic image
+import bannerImage from '../assets/banner2.jpg'; // Import the banner image
 import Sidebar from './Sidebar';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
@@ -88,9 +89,11 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <div className="fitness-quote-banner">
-        <h2>Welcome to Health Club Fitness</h2>
-        <p>Discover new workouts, healthy recipes, and lifestyle tips.</p>
+      <div className="fitness-quote-banner" style={{ backgroundImage: `url(${bannerImage})` }}>
+        <div className="banner-content">
+          <h2>Welcome to Health Club Fitness</h2>
+          <p>Discover new workouts, healthy recipes, and lifestyle tips.</p>
+        </div>
       </div>
       <Sidebar />
 
@@ -131,13 +134,16 @@ const Home = () => {
                 <source src={`http://localhost:8080/uploads/${post.videoPath}`} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
+             
             </div>
           </Slider>
+          <br />
+          <p>{post.description}</p>
           <div className="interaction">
             <button><i className="fas fa-heart"></i> Like</button>
             <button><i className="fas fa-comment"></i> Comment</button>
           </div>
-          <p>{post.description}</p>
+          
         </section>
       ))}
 

@@ -1,3 +1,5 @@
+
+/*home container*/
 .home-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -30,18 +32,40 @@
 
 
 /* Add this to create the fitness quote banner */
+/* Add this CSS for the banner image */
 .fitness-quote-banner {
-  background-color: #333; /* Dark background color */
-  color: white;
-  margin-left: 200px;
-  width: 700px;
-  text-align: center;
-  border-radius: 40px;
-  padding: 20px 0; /* Adjust padding as needed */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 300px; /* Adjust height as needed */
+  width: 100%; /* Cover the full width of the page */
+  right: 55px;
+  bottom: 40px; /* Move the banner to the left */
 }
 
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 20px; /* Adjust the left position as needed */
+  transform: translateY(-50%);
+  text-align: center;
+  color: white;
+  width: calc(100% - 40px); /* Adjust the width of the content */
+}
+
+.banner-content h2 {
+  font-size: 33px;
+  margin-bottom: 10px;
+}
+
+.banner-content p {
+  font-size: 16px;
+  margin: 0;
+}
+
+
 .fitness-quote-banner h2 {
-  font-size: 24px;
+  font-size: 34px;
   margin-bottom: 10px;
 }
 
@@ -50,6 +74,7 @@
 .shared-pics-section p {
   text-align: center;
   margin-right: 150px;
+  font-size: 15px;
 }
 
 
@@ -128,7 +153,7 @@ h1 {
 }
 
 .share-exercise {
-  background-color: #2196F3;
+  background-color: #141e26;
   color: white;
 }
 
@@ -242,7 +267,7 @@ h1 {
 }
 
 .profile-info {
-  background: linear-gradient(to right, #2c3e50, #3498db); /* Gradient background */
+  background: linear-gradient(to right, #2c3e50, #0f212d); /* Gradient background */
   border-radius: 10px;
   padding: 20px;
   text-align: center;
@@ -281,14 +306,14 @@ h1 {
 
 .latest-news {
   margin-top: 20px;
-  background-color: #f0f0f0;
+  background-color: #162942;
   border-radius: 10px;
   padding: 20px;
 }
 
 .latest-news h3 {
   margin-top: 0;
-  color: #333;
+  color: #ffffff;
 }
 
 .latest-news ul {
@@ -301,12 +326,12 @@ h1 {
 }
 
 .latest-news ul li h4 {
-  color: #3498db;
+  color: #b7b7b7;
   margin-bottom: 5px;
 }
 
 .latest-news ul li p {
-  color: #666;
+  color: #ffffff;
 }
 
 .icon-container {
