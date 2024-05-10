@@ -13,6 +13,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Profile from './component/Profile/Profile';
 import WorkoutForm from './component/WorkoutPlan/WorkoutPlan';
 import ShareStatus from './component/Status/status';
+import WorkoutUpdate from './component/WorkoutUpdate'
+
 function App() {
   return (
     <div className="App">
@@ -28,6 +30,7 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/workoutplan' element={<WorkoutForm />} />
         <Route path='/status' element={<ShareStatus />} />
+        <Route path="/update-workout/:id" element={<WorkoutUpdate />} />
         </Routes>
       </Router>
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar />

@@ -52,7 +52,9 @@ public class WorkoutPlanController {
 
 
     @PutMapping("/update")
-    public ResponseEntity<WorkoutPlan> updateWorkoutPlan(@RequestBody WorkoutPlanDTO workoutPlanDTO) {
+    public ResponseEntity<WorkoutPlan> updateWorkoutPlan(
+                                                         @RequestBody WorkoutPlanDTO workoutPlanDTO)
+    {
         WorkoutPlan updatedWorkoutPlan = workoutPlanService.updateWorkoutPlan(workoutPlanDTO);
         return ResponseEntity.ok(updatedWorkoutPlan);
     }
