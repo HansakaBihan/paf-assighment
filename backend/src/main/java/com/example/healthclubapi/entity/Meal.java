@@ -15,11 +15,12 @@ public class Meal {
 
     @Id
     @GeneratedValue
-private Integer id;
+    private Integer id;
     private String title;
     private String ingredients;
     private String nutritional;
     private String information;
-    private String portion_sizes;
-    private String dietary_preferences;
+    private String portionSizes;
+    private String dietaryPreferences;
+    private String imagePath1;
 }
