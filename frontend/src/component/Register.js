@@ -9,7 +9,7 @@ function LoginPage() {
         <h2 className="login-heading">Register</h2>
         <form>
           <div className="form-group">
-            <label htmlFor="username">Full Name</label>
+            <label htmlFor="username"> Name</label>
             <input type="text" id="username" name="username" />
           </div>
           <div className="form-group">

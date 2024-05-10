@@ -138,7 +138,9 @@ const Home = () => {
             </div>
           </Slider>
           <br />
+         
           <p>{post.description}</p>
+          <br />
           <div className="interaction">
             <button><i className="fas fa-heart"></i> Like</button>
             <button><i className="fas fa-comment"></i> Comment</button>

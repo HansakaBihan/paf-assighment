@@ -39,7 +39,7 @@
   position: relative;
   height: 300px; /* Adjust height as needed */
   width: 100%; /* Cover the full width of the page */
-  right: 55px;
+  right: 110px;
   bottom: 40px; /* Move the banner to the left */
 }
 
@@ -197,10 +197,13 @@ h1 {
 .interaction {
   display: flex;
   justify-content: space-between;
+  margin-top: 0px;
+  margin-right: 350px; 
+  margin-left: 200px;/* Add some margin to separate from other content */
 }
 
 .interaction button {
-  padding: 10px 20px;
+  padding: 10px 15px; /* Reduce padding on buttons */
   font-size: 14px;
   background-color: #f0f0f0;
   color: #333;
@@ -210,9 +213,14 @@ h1 {
   transition: background-color 0.3s ease;
 }
 
-.interaction button:hover {
-  background-color: #e0e0e0;
+.interaction button:first-child {
+  margin-right: 5px; /* Adjust margin between buttons */
 }
+
+.interaction button:last-child {
+  margin-left: 5px; /* Adjust margin between buttons */
+}
+
 
 .footer {
   background-color: #333;
