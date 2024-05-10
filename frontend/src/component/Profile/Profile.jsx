@@ -14,7 +14,7 @@ import FitLinkCard from "../HomeSection/FitLinkCard";
 import WorkoutStatusCard from "../WorkoutStatusCard/WorkoutStatusCard";
 import PlanSharingCard from "../PlanSharingCard/PlanSharingCard";
 import "./profile.css"; // Import your CSS file
-
+import MealSharingCard from "../MealPlan/MealSharingCard";
 const Profile = () => {
   const [tabValue, setTabValue] = useState("1");
   const navigate = useNavigate();
@@ -124,7 +124,9 @@ const Profile = () => {
               <PlanSharingCard key={item} />
             ))}
           </TabPanel>
-          <TabPanel value="4">users meal plans</TabPanel>
+          <TabPanel value="4">{[1].map((item) => (
+              <MealSharingCard key={item} />
+            ))}</TabPanel>
         </TabContext>
       </section>
     </div>
