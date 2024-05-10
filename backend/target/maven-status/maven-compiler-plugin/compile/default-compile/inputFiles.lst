@@ -18,6 +18,7 @@
 /Users/thisunsatharasinghe/Desktop/PAF FINAL/paf-assighment/backend/src/main/java/com/example/healthclubapi/entity/WorkoutPlan.java
 /Users/thisunsatharasinghe/Desktop/PAF FINAL/paf-assighment/backend/src/main/java/com/example/healthclubapi/service/ExerciseService.java
 /Users/thisunsatharasinghe/Desktop/PAF FINAL/paf-assighment/backend/src/main/java/com/example/healthclubapi/service/MealService.java
+/Users/thisunsatharasinghe/Desktop/PAF FINAL/paf-assighment/backend/src/main/java/com/example/healthclubapi/dto/MealDTO.java
 /Users/thisunsatharasinghe/Desktop/PAF FINAL/paf-assighment/backend/src/main/java/com/example/healthclubapi/entity/Status.java
 /Users/thisunsatharasinghe/Desktop/PAF FINAL/paf-assighment/backend/src/main/java/com/example/healthclubapi/entity/Post.java
 /Users/thisunsatharasinghe/Desktop/PAF FINAL/paf-assighment/backend/src/main/java/com/example/healthclubapi/controller/WorkoutPlanController.java
@@ -35,6 +36,7 @@
 /Users/thisunsatharasinghe/Desktop/PAF FINAL/paf-assighment/backend/src/main/java/com/example/healthclubapi/dto/ExerciseDTO.java
 /Users/thisunsatharasinghe/Desktop/PAF FINAL/paf-assighment/backend/src/main/java/com/example/healthclubapi/config/AppConfig.java
 /Users/thisunsatharasinghe/Desktop/PAF FINAL/paf-assighment/backend/src/main/java/com/example/healthclubapi/service/PostService.java
+/Users/thisunsatharasinghe/Desktop/PAF FINAL/paf-assighment/backend/src/main/java/com/example/healthclubapi/controller/response/MealResponse.java
 /Users/thisunsatharasinghe/Desktop/PAF FINAL/paf-assighment/backend/src/main/java/com/example/healthclubapi/entity/Exercise.java
 /Users/thisunsatharasinghe/Desktop/PAF FINAL/paf-assighment/backend/src/main/java/com/example/healthclubapi/service/UserService.java
 /Users/thisunsatharasinghe/Desktop/PAF FINAL/paf-assighment/backend/src/main/java/com/example/healthclubapi/repository/UserRepository.java

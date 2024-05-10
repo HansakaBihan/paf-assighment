@@ -8,7 +8,6 @@ import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import TagFacesIcon from "@mui/icons-material/TagFaces";
 import SlideshowIcon from "@mui/icons-material/Slideshow";
 import * as Yup from "yup";
-import FitLinkCard from "./FitLinkCard";
 
 import WorkoutStatusCard from "../WorkoutStatusCard/WorkoutStatusCard";
 import PlanSharingCard from "../PlanSharingCard/PlanSharingCard";

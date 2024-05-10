@@ -1,122 +1,152 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import profileImage from "../../assets/girlpic.jpg";
-import Button from "@mui/material/Button";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import PostImage from "../../assets/first.jpg";
-import ReplyModal from "./ReplyModal";
-import "./fitLinkCard.css";
+import React, { useState, useEffect } from 'react';
+import Sidebar from '../Sidebar.js';
+import { Link } from 'react-router-dom';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import IconButton from '@material-ui/core/IconButton';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import EditPost from '../EditPost.js'; 
 
 const FitLinkCard = () => {
-  const navigate = useNavigate();
-
+  const [posts, setPosts] = useState([]);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [openReplyModal, setOpenReplyModal] = useState(false);
+  const [editPostId, setEditPostId] = useState(null); 
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false); 
 
-  const open = Boolean(anchorEl);
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
-  const handleOpenReplyModel = () => setOpenReplyModal(true);
-  const handleCloseReplyModal = () => setOpenReplyModal(false);
+  const fetchPosts = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/post/get');
+      if (!response.ok) {
+        throw new Error('Failed to fetch posts');
+      }
+      const data = await response.json();
+      setPosts(data);
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+    }
+  };
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
 
-  const handleDeleteFitLink = () => {
-    console.log("Delete FitLink");
-    handleClose();
+  const handleDeleteFitLink = async (postId) => {
+    try {
+      const response = await fetch(`http://localhost:8080/post/posts/${postId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Failed to delete post');
+      }
+      console.log('Post deleted successfully');
+      window.location.reload();
+    } catch (error) {
+      console.error('Error deleting post:', error);
+    }
   };
 
-  const handleLikeFitLink = () => {
-    console.log("handle like FitLink");
+  const handleEditFitLink = (postId) => {
+    setEditPostId(postId); 
+    setIsEditModalOpen(true); 
+  };
+
+  const handleEditSuccess = () => {
+    window.location.reload();
+  };
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
   };
 
   return (
-    <React.Fragment>
-      <div className="fitlink-card">
-        <div className="user-info">
-          <div
-            className="profile-infos"
-            onClick={() => navigate(`/profile/${6}`)}
-          >
-            <img className="profile-images" src={profileImage} alt="profile" />
-            <div className="username">
-              <span className="name">Shannon Fernando</span>
-              <span className="handle">@shannon . 2m</span>
-            </div>
-          </div>
-          <div>
-            <Button
-              id="basic-button"
-              aria-controls={open ? "basic-menu" : undefined}
+    <div className="home-container">
+      <Sidebar />
+  
+      {posts.map(post => (
+        <section key={post.id} className="shared-pic-section">
+          <div className="icon-containers">
+            <IconButton
+              aria-controls="post-menu"
               aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
               onClick={handleClick}
-              className="more-icon-button"
+              className="icon"
             >
-              <MoreHorizIcon className="more-icon" />
-            </Button>
-
+              <MoreVertIcon />
+            </IconButton>
             <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              MenuListProps={{
-                "aria-labelledby": "basic-button",
-              }}
-            >
-              <MenuItem onClick={handleDeleteFitLink}>Details</MenuItem>
-              <MenuItem onClick={handleDeleteFitLink}>Delete</MenuItem>
-              <MenuItem onClick={handleDeleteFitLink}>Edit</MenuItem>
-            </Menu>
-          </div>
-        </div>
+            id="post-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={() => handleDeleteFitLink(post.id)}>
+              Delete
+            </MenuItem>
+            <MenuItem onClick={() => handleEditFitLink(post.id)}>
+              Edit
+            </MenuItem>
+          </Menu>
 
-        <div className="post-info">
-          <div onClick={() => navigate(`/fitlink/${3}`)}>
-            <p className="post-title">Quick Fitness Tips 👍</p>
-            <img className="post-image" src={PostImage} alt="post" />
           </div>
+          <Slider {...sliderSettings}>
+            <div>
+              <img src={`http://localhost:8080/uploads/${post.imagePath1}`} alt="Image 1" className="landscape-image" />
+            </div>
+            <div>
+              <img src={`http://localhost:8080/uploads/${post.imagePath2}`} alt="Image 2" className="landscape-image" />
+            </div>
+            <div>
+              <img src={`http://localhost:8080/uploads/${post.imagePath3}`} alt="Image 3" className="landscape-image" />
+            </div>
+            <div>
+              <video controls className="landscape-video">
+                <source src={`http://localhost:8080/uploads/${post.videoPath}`} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </Slider>
+          
+          <br />
+          <p>{post.description}</p>
+          
           <div className="interaction">
-            <div className="comments">
-              <ChatBubbleOutlineIcon
-                className="comment-icon"
-                onClick={handleOpenReplyModel}
-              />
-              <span>43</span>
-            </div>
-            <div className="likes">
-              <span>54</span>
-              <div
-                className={`like-icon ${
-                  true ? "liked" : ""
-                }`}
-                onClick={handleLikeFitLink}
-              >
-                {true ? (
-                  <FavoriteIcon className="liked-icon" />
-                ) : (
-                  <FavoriteBorderIcon className="not-liked-icon" />
-                )}
-              </div>
-            </div>
+            <button><i className="fas fa-heart"></i> Like</button>
+            <button><i className="fas fa-comment"></i> Comment</button>
+          </div>
+        </section>
+      ))}
+  
+      {isEditModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <EditPost postId={editPostId} closeModal={() => setIsEditModalOpen(false)} onEditSuccess={handleEditSuccess} />
           </div>
         </div>
-      </div>
-
-      <section>
-        <ReplyModal open={openReplyModal} handleClose={handleCloseReplyModal} />
-      </section>
-    </React.Fragment>
+      )}
+  
+      <footer>
+        <p>&copy; 2024 Health Club. All rights reserved.</p>
+      </footer>
+    </div>
   );
 };
 

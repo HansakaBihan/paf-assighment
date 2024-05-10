@@ -110,7 +110,7 @@ const Profile = () => {
             <Tab label="MEAL PLANS" value="4" />
           </TabList>
           <TabPanel value="1">
-            {[1, 1, 1, 1].map((item) => (
+            {[1].map((item) => (
               <FitLinkCard key={item} />
             ))}
           </TabPanel>
