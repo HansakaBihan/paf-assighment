@@ -57,7 +57,7 @@ public class MealController {
                                    @RequestParam("information") String information,
                                    @RequestParam("portionSizes") String portionSizes,
                                    @RequestParam("dietaryPreferences") String dietaryPreferences) throws IOException {
-        return mealService.updateMeal(id, file1, title, ingredients, nutritional, information, portionSizes, dietaryPreferences);
+        return mealService.updateMeal(id, file1,title, ingredients, nutritional, information, portionSizes, dietaryPreferences);
     }
 
 

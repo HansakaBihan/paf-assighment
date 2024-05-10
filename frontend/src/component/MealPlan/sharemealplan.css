@@ -1,0 +1,85 @@
+/* sharemealplan.css */
+
+/* Copy the CSS rules from workoutplan.css and adjust as needed */
+.m-form-container {
+    
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #d4c2c2;
+  }
+  
+  .m-form-group {
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+  
+  .m-form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 5px;
+  }
+  
+  .m-form-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-size: 17px;
+  }
+  
+  textarea.form-input {
+    height: 100px; /* Adjust as needed */
+  }
+  
+  .m-btn-submit {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .m-btn-submit:hover {
+    background-color: #45a049;
+  }
+  
+  .m-btn-submit {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .m-btn-submit:hover {
+    background-color: #da190b;
+  }
+
+  .m-buttons {
+    float: right;
+
+  }
+  
+  .mealheader {
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 50px;
+  }
+  .mainpage {
+    padding: 20px;
+    background-image: url(./bgimage.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }

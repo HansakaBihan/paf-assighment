@@ -1,154 +1,108 @@
-// import React, { useState } from 'react';
-// import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-// import { useNavigate } from "react-router-dom";
-// import Form from 'react-bootstrap/Form';
-// import { Button } from 'react-bootstrap';
-// import './mealplan.css';
-// import axios from 'axios'; // Import axios here
-// const Sharemealplan = () => {
-//   const [formData, setFormData] = useState({
-//     title:'',
-//     ingredients: '',    
-//     nutritional: '',
-//     information:'',
-//     portion_sizes: '',
-//     dietary_preferences: ' ',
-//     imagePath1:'',  
-//   });
-  
-//   const [errors, setErrors] = useState({});
-//   const navigate = useNavigate();
 
-//   const handleBack = () => navigate(-1);
+// import React, { useState } from 'react';
+// import axios from 'axios';
+
+// function Sharemealplan() {
+  
+
+//   const [formData, setFormData] = useState({
+//     title: '',
+//     ingredients: '',
+//     nutritional: '',
+//     information: '',
+//     portionSizes: '',
+//     dietaryPreferences: '',
+//     file1: null // For file upload
+//   });
 
 //   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData((prev) => ({ ...prev, [name]: value }));
-//     setErrors((prev) => ({ ...prev, [name]: '' }));
+//     if (e.target.name === 'file1') {
+//       setFormData({ ...formData, [e.target.name]: e.target.files[0] });
+//     } else {
+//       setFormData({ ...formData, [e.target.name]: e.target.value });
+//     }
 //   };
 
-//   const handleImageUpload = (e) => {
-//     setFormData((prev) => ({ ...prev, image: e.target.files[0] }));
-//   };
-
-//   const handleSubmit = (e) => {
+//   const handleSubmit = async (e) => {
 //     e.preventDefault();
-    
-//       console.log('Meal Plan Data:', formData);
-    
+//     try {
+//       const { title, ingredients, nutritional, information, portionSizes, dietaryPreferences, file1 } = formData;
+//       const formDataToSend = new FormData();
+//       formDataToSend.append('title', title);
+//       formDataToSend.append('ingredients', ingredients);
+//       formDataToSend.append('nutritional', nutritional);
+//       formDataToSend.append('information', information);
+//       formDataToSend.append('portionSizes', portionSizes);
+//       formDataToSend.append('dietaryPreferences', dietaryPreferences);
+//       formDataToSend.append('file1', file1); // Append file to FormData
+
+//       // Send POST request with FormData
+//       await axios.post('http://localhost:8080/meal/addmeal', formDataToSend, {
+//         headers: {
+//           'Content-Type': 'multipart/form-data'
+//         }
+//       });
+
+//       // Reset form data after successful submission
+//       setFormData({
+//         title: '',
+//         ingredients: '',
+//         nutritional: '',
+//         information: '',
+//         portionSizes: '',
+//         dietaryPreferences: '',
+//         file1: null
+//       });
+
+//       // Show alert
+//       alert('Meal added successfully!');
+
+     
+//     } catch (error) {
+//       console.error('Error:', error);
+//       alert('Failed to add meal. Please try again.');
+//     }
 //   };
-
-//   // const validateForm = () => {
-//   //   let isValid = true;
-//   //   const newErrors = {};
-
-//   //   if (!formData.ingredients.trim()) {
-//   //     newErrors.ingredients = 'Please enter ingredients';
-//   //     isValid = false;
-//   //   }
-
-//   //   if (!formData.instructions.trim()) {
-//   //     newErrors.instructions = 'Please enter cooking instructions';
-//   //     isValid = false;
-//   //   }
-
-//   //   if (!formData.description.trim()) {
-//   //     newErrors.description = 'Please enter a description';
-//   //     isValid = false;
-//   //   }
-
-//   //   if (!formData.file1) {
-//   //     newErrors.file1  = 'Please upload an image';
-//   //     isValid = false;
-//   //   }
-
-//   //   setErrors(newErrors);
-//   //   return isValid;
-//   // };
-
-  
-//   const handleSaveMeal = () => {
-//     const { title, ingredients, nutritional, information, portion_sizes, dietary_preferences,imagePath1   } = formData; // Define variables here
-//     axios.post('http://localhost:8080/meal/addmeal', {
-//       title,
-//       ingredients,
-//       nutritional,
-//       information,
-//       portion_sizes,
-//       dietary_preferences,
-//       imagePath1,
-//     })
-//     .then(response => {
-//       alert('Workout plan saved Successfully');
-//       // Optionally, reset form fields or show a success message
-//     })
-//     .catch(error => {
-//       console.error('Error saving workout plan:', error);
-//       // Optionally, show an error message
-//     });
-//   };
-  
 
 //   return (
-//     <div className="PlanSharing">
-//       <section className="flex items-center sticky top-0 bg-opacity-95 px-4">
-//         <KeyboardBackspaceIcon
-//           className="cursor-pointer"
-//           onClick={handleBack}
-//         />
-//         <h1 className="py-5 text-xl font-bold opacity-90">Meal Plan</h1>
-//       </section>
-//       <div className="form-container">
-//         <Form >
-//         <div className="mb-4">
-//             <Form.Label className="form-label">Title</Form.Label>
-//             <Form.Control className="form-input" type="text" name="title" value={formData.title} onChange={handleChange} />
-//             {errors.title && <span className="error">{errors.title}</span>}
-//           </div>
-//           <div className="mb-4">
-//             <Form.Label className="form-label">Ingredients</Form.Label>
-//             <Form.Control className="form-input" type="text" name="ingredients" value={formData.ingredients} onChange={handleChange} />
-//             {errors.ingredients && <span className="error">{errors.ingredients}</span>}
-//           </div>
-//           <div className="mb-4">
-//             <Form.Label className="form-label">Nutritional</Form.Label>
-//             <Form.Control className="form-input" type="text" name="nutritional" value={formData.nutritional} onChange={handleChange} />
-//             {errors.nutritional && <span className="error">{errors.nutritional}</span>}
-//           </div>
-//           <div className="mb-4">
-//             <Form.Label className="form-label">information</Form.Label>
-//             <Form.Control className="form-input" type="text" name="information" value={formData.information} onChange={handleChange} />
-//             {errors.information && <span className="error">{errors.information}</span>}
-//           </div>
-//           <div className="mb-4">
-//             <Form.Label className="form-label">portion_sizes</Form.Label>
-//             <Form.Control className="form-input" as="textarea" name="portion_sizes" value={formData.portion_sizes} onChange={handleChange} rows={4} />
-//             {errors.portion_sizes && <span className="error">{errors.portion_sizes}</span>}
-//           </div>
-//           <div className="mb-4">
-//             <Form.Label className="form-label">dietary_preferences</Form.Label>
-//             <Form.Control className="form-input" as="textarea" name="dietary_preferences" value={formData.dietary_preferences} onChange={handleChange} rows={4} />
-//             {errors.dietary_preferences && <span className="error">{errors.dietary_preferences}</span>}
-//           </div>
-//           <div className="mb-4">
-//             <Form.Label className="form-label">Upload Image</Form.Label>
-//             <Form.Control className="form-input" type="file" onChange={handleImageUpload} />
-//             {errors.image && <span className="error">{errors.image}</span>}
-//           </div> 
-//           <button type="button" onClick={handleSaveMeal} className="btn-submit">Share Meal Plan</button>
-//         </Form>
-//       </div>
-//     </div> 
+//     <form onSubmit={handleSubmit}>
+//       <label htmlFor="title">Title:</label>
+//       <input type="text" id="title" name="title" value={formData.title} onChange={handleChange} required /><br />
+
+//       <label htmlFor="ingredients">Ingredients:</label>
+//       <textarea id="ingredients" name="ingredients" value={formData.ingredients} onChange={handleChange} required /><br />
+
+//       <label htmlFor="nutritional">Nutritional:</label>
+//       <input type="text" id="nutritional" name="nutritional" value={formData.nutritional} onChange={handleChange} required /><br />
+
+//       <label htmlFor="information">Information:</label>
+//       <textarea id="information" name="information" value={formData.information} onChange={handleChange} required /><br />
+
+//       <label htmlFor="portionSizes">Portion Sizes:</label>
+//       <input type="text" id="portionSizes" name="portionSizes" value={formData.portionSizes} onChange={handleChange} required /><br />
+
+//       <label htmlFor="dietaryPreferences">Dietary Preferences:</label>
+//       <input type="text" id="dietaryPreferences" name="dietaryPreferences" value={formData.dietaryPreferences} onChange={handleChange} required /><br />
+
+//       <label htmlFor="file1">File 1:</label>
+//       <input type="file" id="file1" name="file1" onChange={handleChange} required /><br />
+
+//       <button type="submit">Save</button>
+//     </form>
 //   );
-// };
+// }
+
 
 // export default Sharemealplan;
+
+
 import React, { useState } from 'react';
 import axios from 'axios';
+import jsPDF from 'jspdf';
+import './sharemealplan.css'; // Import your CSS file here
+
 
 function Sharemealplan() {
-
-
   const [formData, setFormData] = useState({
     title: '',
     ingredients: '',
@@ -188,15 +142,7 @@ function Sharemealplan() {
       });
 
       // Reset form data after successful submission
-      setFormData({
-        title: '',
-        ingredients: '',
-        nutritional: '',
-        information: '',
-        portionSizes: '',
-        dietaryPreferences: '',
-        file1: null
-      });
+     // resetForm();
 
       // Show alert
       alert('Meal added successfully!');
@@ -206,33 +152,121 @@ function Sharemealplan() {
     }
   };
 
+  const resetForm = () => {
+    setFormData({
+      title: '',
+      ingredients: '',
+      nutritional: '',
+      information: '',
+      portionSizes: '',
+      dietaryPreferences: '',
+      file1: null
+    });
+  };
+  const generatePDF = () => {
+    const pdf = new jsPDF();
+  
+    // Set font style
+    pdf.setFont('times');
+  
+    // Set font size
+    pdf.setFontSize(12);
+  
+    const { title, ingredients, nutritional, information, portionSizes, dietaryPreferences, file1 } = formData;
+  
+    // Add title
+    pdf.setTextColor(31, 73, 125); // Set text color to dark blue
+    pdf.setFontSize(20); // Set font size to 20
+    pdf.text(title, 15, 20, { align: 'center' });
+  
+    // Add ingredients
+    pdf.setTextColor(0); // Set text color to black
+    pdf.setFontSize(14); // Set font size to 14
+    pdf.text("Ingredients:", 15, 40);
+    pdf.setFontSize(12); // Reset font size
+    pdf.text(ingredients, 15, 50);
+  
+    // Add nutritional information
+    pdf.text("Nutritional:", 15, 70);
+    pdf.text(nutritional, 15, 80);
+  
+    // Add additional information
+    pdf.text("Information:", 15, 100);
+    pdf.text(information, 15, 110);
+  
+    // Add portion sizes
+    pdf.text("Portion Sizes:", 15, 130);
+    pdf.text(portionSizes, 15, 140);
+  
+    // Add dietary preferences
+    pdf.text("Dietary Preferences:", 15, 160);
+    pdf.text(dietaryPreferences, 15, 170);
+  
+    // Assuming file1 is an image file
+    if (file1) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file1);
+      reader.onloadend = () => {
+        const imageData = reader.result;
+        pdf.addImage(imageData, 'JPEG', 15, 190, 80, 80); // Adjust coordinates and dimensions as needed
+        pdf.save('meal.pdf');
+      };
+    } else {
+      pdf.save('meal.pdf');
+    }
+  };
+  
+  
+
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Title:</label>
-      <input type="text" id="title" name="title" value={formData.title} onChange={handleChange} required /><br />
+    <div className="mainpage">
+    <form className="m-form-container">
+      <h1 className="mealheader">MEAL PLAN</h1>
 
-      <label htmlFor="ingredients">Ingredients:</label>
-      <textarea id="ingredients" name="ingredients" value={formData.ingredients} onChange={handleChange} required /><br />
-
-      <label htmlFor="nutritional">Nutritional:</label>
-      <input type="text" id="nutritional" name="nutritional" value={formData.nutritional} onChange={handleChange} required /><br />
-
-      <label htmlFor="information">Information:</label>
-      <textarea id="information" name="information" value={formData.information} onChange={handleChange} required /><br />
-
-      <label htmlFor="portionSizes">Portion Sizes:</label>
-      <input type="text" id="portionSizes" name="portionSizes" value={formData.portionSizes} onChange={handleChange} required /><br />
-
-      <label htmlFor="dietaryPreferences">Dietary Preferences:</label>
-      <input type="text" id="dietaryPreferences" name="dietaryPreferences" value={formData.dietaryPreferences} onChange={handleChange} required /><br />
-
-      <label htmlFor="file1">File 1:</label>
-      <input type="file" id="file1" name="file1" onChange={handleChange} required /><br />
-
-      <button type="submit">Save</button>
+      <label htmlFor="title" className="m-form-label">Title:</label>
+      <input type="text" id="title" name="title" value={formData.title} onChange={handleChange} className="m-form-input" required /><br />
+  
+      <label htmlFor="ingredients" className="m-form-label">Ingredients:</label>
+      <textarea id="ingredients" name="ingredients" value={formData.ingredients} onChange={handleChange} className="m-form-input" required /><br />
+  
+      <label htmlFor="nutritional" className="m-form-label">Nutritional:</label>
+      <textarea id="nutritional" name="nutritional" value={formData.nutritional} onChange={handleChange} className="m-form-input" required /><br />
+  
+      <label htmlFor="information" className="m-form-label">Information:</label>
+      <textarea id="information" name="information" value={formData.information} onChange={handleChange} className="m-form-input" required /><br />
+  
+      {/* <label htmlFor="portionSizes" className="m-form-label">Portion Sizes:</label>
+      <input type="text" id="portionSizes" name="portionSizes" value={formData.portionSizes} onChange={handleChange} className="m-form-input" required /><br />
+     */}
+      <label htmlFor="portionSizes" className="m-form-label">Portion Sizes:</label>
+      <select id="portionSizes" name="portionSizes" value={formData.dropdownValue} onChange={handleChange} className="m-form-input">
+        <option value="">Select a Portion Size</option>
+        <option value="Small">Small</option>
+        <option value="Medium">Medium</option>
+        <option value="Large">Large</option>
+        </select>
+      <label htmlFor="dietaryPreferences" className="m-form-label">Dietary Preferences:</label>
+      <input type="text" id="dietaryPreferences" name="dietaryPreferences" value={formData.dietaryPreferences} onChange={handleChange} className="m-form-input" required /><br />
+  
+   {/* <label htmlFor="dietaryPreferences" className="m-form-label">Dietary Preferences:</label>
+      <select id="dietaryPreferences" name="dietaryPreferences" value={formData.dropdownValue} onChange={handleChange} className="m-form-input">
+        <option value="">Select a dietary preference</option>
+        <option value="Vegetarian">Vegetarian</option>
+        <option value="Vegan">Vegan</option>
+        <option value="Gluten-Free">Gluten-Free</option>
+        <option value="Dairy-Free">Dairy-Free</option>
+      
+      </select> */}
+      <label htmlFor="file1" className="m-form-label">File 1:</label>
+      <input type="file" id="file1" name="file1" onChange={handleChange} className="m-form-input" required /><br />
+  
+      <div className='m-buttons'>
+      <button type="button" className="m-btn-submit" onClick={handleSubmit}>Save</button>
+      <button type="button" onClick={generatePDF} className="m-btn-submit">Generate PDF</button>
+      </div>
     </form>
+    </div>
   );
 }
-
 
 export default Sharemealplan;

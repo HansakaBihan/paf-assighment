@@ -140,7 +140,7 @@ public class MealServiceImpl implements MealService {
     public Meal getMealById(Integer id) {
             return mealRepository.findById(id).orElse(null);
 
-        
+
     }
 }
 
