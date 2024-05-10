@@ -56,7 +56,7 @@ const WorkoutForm = () => {
       // Optionally, reset form fields or show a success message
     })
     .catch(error => {
-      console.error('Error saving workout plan:', error);
+      alert('Error saving workout plan:', error);
       // Optionally, show an error message
     });
   };
@@ -116,63 +116,63 @@ const WorkoutForm = () => {
   return (
     <div className="WorkoutPlanSharing">
       <KeyboardBackspaceIcon
-          className="cursor-pointer"
+          className="w-cursor-pointer"
           onClick={handleBack}
         />
-      <div className="form-container">
+      <div className="w-form-container">
       
-        <h2 className='header'>Create New Workout Plan</h2>
+        <h2 className='w-header'>Create New Workout Plan</h2>
         
-        <form className="form-sec workout-form">
-          <div className="form-group">
-            <label htmlFor="name" className="form-label">Name:</label>
+        <form className="w-form-sec workout-form">
+          <div className="w-form-group">
+            <label htmlFor="name" className="w-form-label">Name:</label>
             <input
               type="text"
               id="name"
-              className="form-input"
+              className="w-form-input"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="age" className="form-label">Age:</label>
+          <div className="w-form-group">
+            <label htmlFor="age" className="w-form-label">Age:</label>
             <input
               type="number"
               id="age"
-              className="form-input"
+              className="w-form-input"
               value={age}
               onChange={(e) => setAge(e.target.value)}
               required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="weight" className="form-label">Weight(kg):</label>
+          <div className="w-form-group">
+            <label htmlFor="weight" className="w-form-label">Weight(kg):</label>
             <input
               type="number"
               id="weight"
-              className="form-input"
+              className="w-form-input"
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
               required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="height" className="form-label">Height(cm):</label>
+          <div className="w-form-group">
+            <label htmlFor="height" className="w-form-label">Height(cm):</label>
             <input
               type="number"
               id="height"
-              className="form-input"
+              className="w-form-input"
               value={height}
               onChange={(e) => setHeight(e.target.value)}
               required
             />
           </div>
           <div>
-            <table className="exercise-table">
+            <table className="w-exercise-table">
               <thead>
                 <tr>
-                  <th>Exercise</th>
+                <th>Exercise</th>
                   <th>Reps</th>
                   <th>Sets</th>
                 </tr>
@@ -185,15 +185,15 @@ const WorkoutForm = () => {
                         type="text"
                         value={exercise.name}
                         onChange={(e) => handleExerciseChange(index, 'name', e.target.value)}
-                        className="form-input"
+                        className="w-form-input"
                       />
                     </td>
                     <td>
                       <input
-                        type="number"
+                        type="text"
                         value={exercise.reps}
                         onChange={(e) => handleExerciseChange(index, 'reps', e.target.value)}
-                        className="form-input"
+                        className="w-form-input"
                       />
                     </td>
                     <td>
@@ -201,12 +201,12 @@ const WorkoutForm = () => {
                         type="number"
                         value={exercise.sets}
                         onChange={(e) => handleExerciseChange(index, 'sets', e.target.value)}
-                        className="form-input"
+                        className="w-form-input"
                       />
                     </td>
                     <td>
                     
-                        <img src={DeleteIcon} alt="Delete" className="delete-icon" height="20px" width="20px" onClick={() => handleDeleteExercise(index)}/>
+                        <img src={DeleteIcon} alt="Delete" className="w-delete-icon" height="20px" width="20px" onClick={() => handleDeleteExercise(index)}/>
                       
                     </td>
                   </tr>
@@ -214,26 +214,26 @@ const WorkoutForm = () => {
               </tbody>
             </table>
             
-              <img src={AddIcon} alt="Add" className="plus-icon" height="30px" width="30px" onClick={handleAddExercise}/>
+              <img src={AddIcon} alt="Add" className="w-plus-icon" height="30px" width="30px" onClick={handleAddExercise}/>
             
           </div>
           <div>
-            <button type="button" onClick={toggleModel} className="btn-submit">Share</button>
-            <button type="button" onClick={handleSaveWorkout} className="btn-submit">Save</button>
-            <button type="button" onClick={handleDownloadPDF} className="btn-submit">Print</button>
+            <button type="button" onClick={toggleModel} className="w-btn-submit">Share</button>
+            <button type="button" onClick={handleSaveWorkout} className="w-btn-submit">Save</button>
+            <button type="button" onClick={handleDownloadPDF} className="w-btn-submit">Print</button>
           </div>
         </form>
                 {model && (
-                  <div className='model'>
-                  <div className='overlay'>
-                    <div className="model-content">
+                  <div className='w-model'>
+                  <div className='w-overlay'>
+                    <div className="w-model-content">
                       <h4>
                         Are You Sure You want to share this Workout Plan
                       </h4>
-                      <button className="yes-btn">
+                      <button className="w-yes-btn">
                         Yes
                       </button>
-                      <button className="no-btn" onClick={toggleModel}>
+                      <button className="w-no-btn" onClick={toggleModel}>
                         No
                       </button>
                     </div>

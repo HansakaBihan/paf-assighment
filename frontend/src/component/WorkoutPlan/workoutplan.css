@@ -1,15 +1,4 @@
-
-/* 
-.meal-plan-form .head h2 {
-    text-align: center;
-    color: #1e0443;
-    font-weight: 600;
-    font-size: 30px;
-    margin-top: 30px;
-    
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  } */
-  .header {
+  .w-header {
     text-align: center;
     color: #4f9e1e;
     font-weight: 600;
@@ -18,19 +7,19 @@
     
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
-  .cursor-pointer {
+  .w-cursor-pointer {
     cursor: pointer;
     color: antiquewhite;
   }
   
-  .meal-plan-form .form-sec {
+  .w-meal-plan-form .form-sec {
     margin-top: 50px;
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
   
-  .meal-plan-form .form-sec input {
+  .w-meal-plan-form .form-sec input {
     height: 70px;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 8px;
@@ -38,7 +27,7 @@
     font-size: 20px;
   }
   
-  .meal-plan-form .form-sec textarea {
+  .w-meal-plan-form .form-sec textarea {
     height: 140px;
     border: 1px solid black;
     border-radius: 8px;
@@ -46,7 +35,7 @@
     font-size: 20px;
   }
   
-  .meal-plan-form .form-sec button {
+  .w-meal-plan-form .form-sec button {
     background-color: #1e0443;
     opacity: 67%;
     height: 60px;
@@ -56,9 +45,9 @@
     font-weight: bold;
   }
   
-  .meal-plan-form .form-sec input[type="text"]::placeholder,
-  .meal-plan-form .form-sec input[type="date"]::placeholder,
-  .meal-plan-form .form-sec textarea::placeholder {
+  .w-meal-plan-form .form-sec input[type="text"]::placeholder,
+  .w-meal-plan-form .form-sec input[type="date"]::placeholder,
+  .w-meal-plan-form .form-sec textarea::placeholder {
     color: black; /* Change placeholder color to gray */
   }
   
@@ -74,40 +63,44 @@
   background-attachment: fixed;
 }
 
-.form-container {
+.w-form-container {
   max-width: 600px;
   margin: 0 auto;
+  padding: 20px;
   background-color: #000000;
   color: aliceblue;
   border: 1px solid ;
+  
 }
 
-.form-container h1 {
+.w-form-container h1 {
   color: #1E0443;
   font-size: 24px;
   margin-bottom: 20px;
 }
 
-.form-label {
+.w-form-label {
   font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 0px;
 }
 
-.form-input {
+.w-form-input {
   width: 100%;
   padding: 5px;
-  margin-bottom: 0px;
+  margin-top: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
   height: 35px;
 }
 
-.error {
+.w-error {
   color: red;
   font-size: 14px;
 }
 
 
-.btn-submit {
+.w-btn-submit {
   background-color: #4f9e1e;
   color: white;
   padding: 10px 20px;
@@ -119,11 +112,11 @@
 }
 
 
-.submit-btn:hover {
+.w-submit-btn:hover {
   background-color: #1b5e39;
 }
 
-.model, .overlay {
+.w-model, .w-overlay {
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -133,10 +126,10 @@
   position: fixed;
 }
 
-.overlay {
+.w-overlay {
   background: rgba(49,49,49,0.8);
 }
-.model-content {
+.w-model-content {
   color: #000000;
   position: absolute;
   top: 40%;
@@ -144,20 +137,17 @@
   transform: translate(-50%, -50%);
   line-height: 1.4;
   background: #5ea051;
-  padding: 14px 28px;
-  border-radius: 3px;
+  padding: 30px 20px 20px 30px;
+  border-radius: 10px;
   max-width: 600px;
   min-width: 300px;
+  height: 150px;
+  border: 1px solid black;
 }
 
-.close-model {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 5px 7px;
-}
 
-.yes-btn{
+
+.w-yes-btn{
   background-color: #000000;
   color: white;
   padding: 10px 20px;
@@ -166,8 +156,12 @@
   border-radius: 4px;
   cursor: pointer;
   float: left;
+  position: absolute;
+  bottom: 10px;
+  left: 50px;
+  
 }
-.no-btn{
+.w-no-btn{
   background-color: #000000;
   color: white;
   padding: 10px 20px;
@@ -176,28 +170,32 @@
   border-radius: 4px;
   cursor: pointer;
   float: right;
+  position: absolute;
+  bottom: 10px;
+  right: 50px;
+  
 }
 
-.plus-icon {
+.w-plus-icon {
 
   padding: 0px;
   cursor: pointer;
   margin-top: 10px;
  
 }
-.plus-icon:hover {
+.w-plus-icon:hover {
   transform: scale(1.2);
 }
-.delete-icon {
+.w-delete-icon {
 
   padding: 0px;
   margin-top: 15px;
   cursor: pointer;
 }
-.delete-icon:hover {
+.w-delete-icon:hover {
   transform: scale(1.2);
 }
 
-.btn-submit:hover {
+.w-btn-submit:hover {
 transform: scale(1.1);
 }

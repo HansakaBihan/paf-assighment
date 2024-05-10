@@ -1,0 +1,129 @@
+.plan-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .created-by{
+    font-size: small;
+  }
+
+
+  .plan-item {
+    border: 1px solid #3b3636;
+    background-color: #cadefc;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: calc(100% - 20px); /* Adjust the width as needed */
+  }
+  
+  .plan-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  
+  }
+  
+  .plan-header h3 {
+    margin-left:60px;
+    font-size: 24px; /* Increase font size for the plan name */
+  }
+  
+  .plan-date {
+    font-size: 16px; /* Increase font size for the date */
+  }
+  
+  .plan-details p {
+    margin: 10px 0;
+    font-size: 18px; /* Increase font size for the details */
+  }
+  
+  .exercise-table {
+    width: 100%;
+  }
+  
+  .exercise-table th,
+  .exercise-table td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .exercise-table th {
+    font-size: 18px; /* Increase font size for table headers */
+  }
+  
+  .exercise-table td {
+    font-size: 16px; /* Increase font size for table data */
+  }
+  
+  .ps-model, .ps-overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+  }
+  
+  .ps-overlay {
+    background: rgba(49,49,49,0.8);
+  }
+  .ps-model-content {
+    color: #000000;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #5ea051;
+    padding: 30px 20px 20px 30px;
+    border-radius: 10px;
+    width: 500px;
+    
+    height: 500px;
+    border: 1px solid black;
+  }
+   .header-exercise{
+    margin-top: 30px;
+    text-align:center;
+    font-size: large;
+    font-style: italic;
+   }
+
+   .edit-delete-btn{
+    float: right;
+   }
+
+   .e-delete-icon {
+
+    padding: 0px;
+    margin-left: 0px;
+    cursor: pointer;
+  }
+  .e-delete-icon:hover {
+    transform: scale(1.2);
+  }
+
+  .e-edit-icon {
+
+    padding: 0px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+  .e-edit-icon:hover {
+    transform: scale(1.2);
+  }
+  .e-profile-avatar{
+    margin-right: 0;
+  }
+  .e-avatar-image{
+    height: 50px;
+    width: 50px;
+    margin-right: -50px;
+  }
+  .e-image-name{
+    overflow: hidden;
+  }
+  

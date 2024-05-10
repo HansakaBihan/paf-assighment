@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class ExerciseDTO {
     private String name;
-    private int reps;
+    private String reps;
     private int sets;
 }
 

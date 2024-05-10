@@ -1,223 +1,96 @@
-import React, { useState } from "react";
-import "./PlanSharingCard.css";
-import profileImage from "../../assets/avatar.png";
-import wcard from "../../assets/wcard.png";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
-import Button from "@mui/material/Button";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import { Avatar } from "@mui/material";
-import ReplyModal from "../HomeSection/ReplyModal";
-import PendingActionsIcon from "@mui/icons-material/PendingActions";
+import "./PlanSharingCard.css";
+import DeleteIcon from './deleteBtn.png';
+import EditIcon from './editBtn.png';
+import profileImage from "./avatar.png";
+
+
 
 function PlanSharingCard() {
+  const [workoutPlans, setWorkoutPlans] = useState([]);
+  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [model, setModel] = useState(false);
   const navigate = useNavigate();
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/workout-plans/workouts")
+      .then((response) => {
+        setWorkoutPlans(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching workout plans:", error);
+      });
+  }, []);
 
-  const open = Boolean(anchorEl);
-
-  const [openReplyModal, setOpenReplyModal] = useState(false);
-  const handleOpenReplyModel = () => setOpenReplyModal(true);
-  const handleCloseReplyModal = () => setOpenReplyModal(false);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleDeleteFitLink = () => {
-    console.log("Delete FitLink");
-    handleClose();
+  const handleUpdate = (plan) => {
+    setSelectedPlan(plan);
+    toggleModel();
   };
 
-  const handleLikeFitLink = () => {
-    console.log("handle like FitLink");
+  const handleDelete = (planId) => {
+    axios
+      .delete(`http://localhost:8080/api/workout-plans/${planId}`)
+      .then((response) => {
+        console.log("Plan deleted successfully");
+        // Remove the deleted plan from the state
+        setWorkoutPlans(workoutPlans.filter(plan => plan.id !== planId));
+      })
+      .catch((error) => {
+        console.error("Error deleting plan:", error);
+      });
+  };
+
+  const toggleModel = () => {
+    setModel(!model);
   };
 
   return (
-    <div className="flex space-x-5 ">
-      <Avatar
-        className="cursor-pointer"
-        alt="username"
-        src={profileImage}
-        style={{ marginLeft: 40, width: 60, height: 60 }}
-      />
+    <div className="plan-list">
+      {workoutPlans.map((plan) => (
+        <div key={plan.id} className="plan-item">
 
-      <div className="w-full">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center WorkoutStatusCard cursor-pointer">
-            <span className="font-semibold" style={{ fontSize: "18px" }}>
-              Shannon Fernando
-            </span>
-            <span className="text-gray-600">@shannon . 2m</span>
+          <div className="edit-delete-btn">
+
+          <img src={DeleteIcon} alt="Delete" className="e-delete-icon" height="20px" width="20px" onClick={() => handleDelete(plan.id) }/>
+          <img src={EditIcon} alt="Edit" className="e-edit-icon" height="20px" width="20px" onClick={() => handleUpdate(plan) }/>
+
           </div>
-          <div>
-            <Button
-              id="basic-button"
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              onClick={handleClick}
-              sx={{
-                "&:hover": {
-                  bgcolor: "#ffffff",
-                },
-              }}>
-              <MoreHorizIcon
-                style={{
-                  color: "#6C08CB",
-                  width: 35,
-                  height: 35,
-                  marginRight: 70,
-                }}
-              />
-            </Button>
+          
+          
 
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              MenuListProps={{
-                "aria-labelledby": "basic-button",
-              }}>
-              <MenuItem
-                onClick={handleDeleteFitLink}
-                style={{ fontWeight: 300 }}>
-                Details
-              </MenuItem>
-              <MenuItem
-                onClick={handleDeleteFitLink}
-                style={{ fontWeight: 300 }}>
-                Delete
-              </MenuItem>
-              <MenuItem
-                onClick={handleDeleteFitLink}
-                style={{ fontWeight: 300 }}>
-                Edit
-              </MenuItem>
-            </Menu>
+          <div className="plan-details">
+          <div className="plan-header">
+            <img className="e-avatar-image" src={profileImage}/>
+            <h3 className="e-header-name">{plan.name}</h3>
           </div>
-        </div>
-
-        <div className="mt-1">
-          <div className="cursor-pointer">
-            <p className="p-0 mb-2" style={{ fontSize: "18px" }}>
-              My Fitness Plans are here 🤗
-            </p>
-            <div
-              className="flex flex-col  border border-gray-400 rounded-md"
-              style={{ width: "70%" }}>
-              <p
-                style={{
-                  marginTop: "4px",
-                  color: "green",
-                  fontSize: "18px",
-                  marginLeft: "358px",
-                  fontWeight: 600,
-                }}>
-                My Plans
-              </p>
-              <div className="flex flex-row mt-2">
-                <div className="flex flex-col">
-                  <b>
-                    <h1 style={{ fontSize: "24px", marginLeft: "20px" }}>
-                      Push Ups
-                    </h1>
-                  </b>
-                  <h1 style={{ fontSize: "20px", marginLeft: "20px" }}>
-                    2024.04.18
-                  </h1>
-                </div>
-
-                <div style={{ marginLeft: "238px" }}>
-                  <PendingActionsIcon
-                    style={{ width: 60, height: 60, color: "#A05AEA" }}
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-row mt-7">
-                <h2
-                  style={{
-                    fontSize: "18px",
-                    fontWeight: 600,
-                    textAlign: "center",
-                    marginLeft: "20px",
-                  }}>
-                  No Of Sets - 03
-                </h2>
-                <h2
-                  style={{
-                    fontSize: "18px",
-                    fontWeight: 600,
-                    textAlign: "center",
-                    marginLeft: "115px",
-                  }}>
-                  No Of Repetitions - 10
-                </h2>
-              </div>
-
-              <div
-                className="mt-4"
-                style={{
-                  marginLeft: "20px",
-                  marginRight: "20px",
-                  marginBottom: "45px",
-                }}>
-                <p style={{ textAlign: "justify" }}>
-                  Lorem Ipsum has been the industry's standard dummy text ever
-                  since the 1500s, when an unknown printer took a galley of type
-                  and scrambled it to make a type specimen book. It has survived
-                  not only five centuries, but also the leap into electronic
-                  typesetting, remaining essentially unchanged.
-                </p>
-              </div>
-            </div>
+            <p>Age: {plan.age}</p>
+            <p>Weight: {plan.weight} kg</p>
+            <p>Height: {plan.height} cm</p>
+            <h4 className="header-exercise">Exercises</h4>
+            <table className="exercise-table">
+              <thead>
+                <tr>
+                  <th>Exercise</th>
+                  <th>Reps</th>
+                  <th>Sets</th>
+                </tr>
+              </thead>
+              <tbody>
+                {plan.exercises.map((exercise) => (
+                  <tr key={exercise.id}>
+                    <td>{exercise.name}</td>
+                    <td>{exercise.reps}</td>
+                    <td>{exercise.sets}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-
-          <div className="flex flex-wrap items-center justify-between py-5">
-            <div className="flex items-center space-x-3 text-gray-600">
-              <ChatBubbleOutlineIcon
-                className="cursor-pointer"
-                onClick={handleOpenReplyModel}
-                style={{ height: 30, width: 30 }}
-              />
-              <p>48</p>
-            </div>
-            <div
-              className={`${
-                true ? "text-pink-600" : "text-gray-600"
-              } space-x-1 flex
-              items-center`}>
-              {true ? (
-                <FavoriteIcon
-                  onClick={handleLikeFitLink}
-                  className="cursor-pointer"
-                  style={{ height: 30, width: 30 }}
-                />
-              ) : (
-                <FavoriteBorderIcon
-                  onClick={handleLikeFitLink}
-                  className="cursor-pointer"
-                  style={{ height: 30, width: 30 }}
-                />
-              )}
-              <p style={{ marginRight: 400 }}>106</p>
-            </div>
           </div>
-        </div>
-      </div>
-      <section>
-        <ReplyModal open={openReplyModal} handleClose={handleCloseReplyModal}/>
-      </section>
+      ))}
     </div>
   );
 }

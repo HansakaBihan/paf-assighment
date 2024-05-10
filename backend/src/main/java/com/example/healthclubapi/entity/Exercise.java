@@ -14,7 +14,7 @@ public class Exercise {
     private Long id;
 
     private String name;
-    private int reps;
+    private String reps;
     private int sets;
 
     // You can add additional fields or relationships as needed
