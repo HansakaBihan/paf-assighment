@@ -1,54 +1,101 @@
-.WorkoutStatusCard {
-  display: flex;
-  gap: 30px;
+/* WorkoutStatusCard.css */
+.workout-status-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
-.WorkoutStatusCard .img-sec img {
-  height: 40px;
-  width: auto;
-}
-
-.WorkoutStatusCard .f-sec {
+.card-header {
   display: flex;
-  gap: 130px;
   align-items: center;
 }
 
-.WorkoutStatusCard .tt-img img {
-  height: 70px;
-  width: auto;
+.user-details {
+  margin-left: 10px;
 }
 
-.WorkoutStatusCard .tt-sec {
+.username {
+  font-weight: bold;
+}
+
+.timestamp {
+  color: #666666;
+  margin-left: 5px;
+}
+
+.more-icon-button {
+  margin-left: auto;
+}
+
+.card-content {
+  margin-top: 15px;
+}
+
+.status-text {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.workout-details {
   display: flex;
-  gap: 80px;
-  margin-top: 20px;
+  align-items: center;
 }
 
-.WorkoutStatusCard .t-sec {
-  border: 1px solid black;
-  padding: 30px;
-  border-radius: 9px;
+.workout-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-.WorkoutStatusCard .detail-sec {
+.workout-info {
+  margin-left: 15px;
+}
+
+.workout-info h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333333;
+}
+
+.workout-info p {
+  font-size: 16px;
+  color: #666666;
+}
+
+.update-workout {
+  margin-top: 15px;
+}
+
+.workout-name-input,
+.reps-input,
+.date-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+}
+
+.card-actions {
+  margin-top: 15px;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  align-items: center;
 }
 
-.WorkoutStatusCard .userName {
-  font-size: 20px;
-  font-weight: bold;
+.like-button,
+.comment-button {
+  background-color: #6C08CB;
+  color: #ffffff;
+  margin-right: 10px;
 }
 
- .workoutname {
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-}
-
-.WorkoutStatusCard .workoutCount {
-  font-size: 20px;
-  font-weight: bold;
+.like-button:hover,
+.comment-button:hover {
+  background-color: #4b0670;
 }

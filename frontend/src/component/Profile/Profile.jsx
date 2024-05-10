@@ -115,7 +115,7 @@ const Profile = () => {
             ))}
           </TabPanel>
           <TabPanel value="2">
-            {[1, 1, 1, 1].map((item) => (
+            {[1].map((item) => (
               <WorkoutStatusCard key={item} />
             ))}
           </TabPanel>

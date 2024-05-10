@@ -1,164 +1,117 @@
-import React, { useState } from "react";
+// WorkoutStatusCard.js
+import React, { useState, useEffect } from "react";
 import "./WorkoutStatusCard.css";
-import profileImage from "../../assets/avatar.png";
-import wcard from "../../assets/wcard.png";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { useNavigate } from "react-router-dom";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Avatar } from "@mui/material";
-import ReplyModal from "../HomeSection/ReplyModal";
+import { Form } from "react-bootstrap";
 
 function WorkoutStatusCard() {
-  const navigate = useNavigate();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [workout, setWorkout] = useState({
+    distanceRan: "",
+    pushupsCompleted: "",
+    weightLifted: "",
+    description: ""
+  });
+  const [open, setOpen] = useState(false);
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const open = Boolean(anchorEl);
-
-  const [openReplyModal, setOpenReplyModal] = useState(false);
-  const handleOpenReplyModel = () => setOpenReplyModal(true);
-  const handleCloseReplyModal = () => setOpenReplyModal(false);
+  useEffect(() => {
+    fetch("http://localhost:8080/status/get/313")
+      .then((response) => response.json())
+      .then((data) => {
+        setWorkout(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching workout data:", error);
+      });
+  }, []);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
 
-  const handleDeleteFitLink = () => {
-    console.log("Delete FitLink");
-    handleClose();
+  const handleEdit = () => {
+    setOpen(true);
+    setAnchorEl(null);
   };
 
-  const handleLikeFitLink = () => {
-    console.log("handle like FitLink");
+  const handleDelete = () => {
+    // Implement delete functionality here
+    setAnchorEl(null);
+  };
+
+  const handleLike = () => {
+    // Implement like functionality here
   };
 
   return (
-    <div className="flex space-x-5 ">
-      <Avatar
-        className="cursor-pointer"
-        alt="username"
-        src={profileImage}
-        style={{ marginLeft: 40, width: 60, height: 60 }}
-      />
-      <div className="w-full">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center WorkoutStatusCard cursor-pointer">
-            <span className="font-semibold" style={{ fontSize: "18px" }}>
-              Shannon Fernando
-            </span>
-            <span className="text-gray-600">@shannon . 2m</span>
-          </div>
-          <div>
-            <Button
-              id="basic-button"
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              onClick={handleClick}
-              sx={{
-                "&:hover": {
-                  bgcolor: "#ffffff",
-                },
-              }}
-            >
-              <MoreHorizIcon
-                style={{
-                  color: "#6C08CB",
-                  width: 35,
-                  height: 35,
-                  marginRight: 70,
-                }}
-              />
-            </Button>
-
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              MenuListProps={{
-                "aria-labelledby": "basic-button",
-              }}
-            >
-              <MenuItem
-                onClick={handleDeleteFitLink}
-                style={{ fontWeight: 300 }}
-              >
-                Details
-              </MenuItem>
-              <MenuItem
-                onClick={handleDeleteFitLink}
-                style={{ fontWeight: 300 }}
-              >
-                Delete
-              </MenuItem>
-              <MenuItem
-                onClick={handleDeleteFitLink}
-                style={{ fontWeight: 300 }}
-              >
-                Edit
-              </MenuItem>
-            </Menu>
+    <div className="workout-status-card">
+      <div className="card-header">
+        <Avatar alt="username" />
+        <div className="user-details">
+          <span className="username">Hansaka Bihan</span>
+          <span className="timestamp">  @hans . 1m</span>
+        </div>
+        <Button
+          id="basic-button"
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          onClick={handleClick}
+          className="more-icon-button"
+        >
+          <MoreHorizIcon />
+        </Button>
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleEdit}>Edit</MenuItem>
+          <MenuItem onClick={handleDelete}>Delete</MenuItem>
+        </Menu>
+      </div>
+      <div className="card-content">
+        <p className="status-text">This is my latest update</p>
+        <div className="workout-details">
+          <div className="workout-info">
+            <h3>{workout.name}</h3>
+            <p>{workout.reps}</p>
+            <p>{workout.date}</p>
           </div>
         </div>
-        <div className="mt-1">
-          <div className="cursor-pointer">
-            <p className="p-0 mb-2" style={{ fontSize: "18px" }}>
-              My Current Fitness Status is good guys 😎
-            </p>
-            <div className="flex  border border-gray-400 rounded-md" style={{width:"70%"}}>
-              <img className="w-[18rem]  p-5 rounded-md" src={wcard} alt="" />
-              <div className="flex flex-col mt-20">
-                <h1 className="workoutname">Push Ups</h1>
-                <h2 style={{fontSize:"20px", fontWeight:600, textAlign:"center"}}>15 reps</h2>
-                <p style={{fontSize:"18px", textAlign:"center", marginTop:"20px", color:"green", fontWeight:600}}>2024.04.17</p>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-wrap items-center justify-between py-5">
-            <div className="flex items-center space-x-3 text-gray-600">
-              <ChatBubbleOutlineIcon
-                className="cursor-pointer"
-                onClick={handleOpenReplyModel}
-                style={{ height: 30, width: 30 }}
-              />
-              <p>89</p>
-            </div>
-            <div
-              className={`${
-                true ? "text-pink-600" : "text-gray-600"
-              } space-x-1 flex
-              items-center`}
-            >
-              {true ? (
-                <FavoriteIcon
-                  onClick={handleLikeFitLink}
-                  className="cursor-pointer"
-                  style={{ height: 30, width: 30 }}
-                />
-              ) : (
-                <FavoriteBorderIcon
-                  onClick={handleLikeFitLink}
-                  className="cursor-pointer"
-                  style={{ height: 30, width: 30 }}
-                />
-              )}
-              <p style={{ marginRight: 400 }}>98</p>
-            </div>
-          </div>
+        <div className="update-workout">
+          <Form.Group>
+            <Form.Label>Distance Ran (Km)</Form.Label>
+            <Form.Control type="text" readOnly value={workout.distanceRan} />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Pushups Completed (Nos)</Form.Label>
+            <Form.Control type="text" readOnly value={workout.pushupsCompleted} />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Weight Lifted (Kg)</Form.Label>
+            <Form.Control type="text" readOnly value={workout.weightLifted} />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Description</Form.Label>
+            <Form.Control as="textarea" rows={3} readOnly value={workout.description} />
+          </Form.Group>
         </div>
       </div>
-      <section>
-        <ReplyModal open={openReplyModal} handleClose={handleCloseReplyModal}/>
-      </section>
+      <div className="card-actions">
+        <Button onClick={handleLike} className="like-button">
+          Like
+        </Button>
+        <Button className="comment-button">Comment</Button>
+      </div>
     </div>
   );
 }

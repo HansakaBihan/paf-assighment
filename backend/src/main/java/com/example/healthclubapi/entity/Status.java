@@ -19,11 +19,11 @@ public class Status {
     @GeneratedValue
     private Integer id;
 
-    private Number distanceRan;
+    private Integer distanceRan;
 
     private Integer pushupsCompleted;
 
-    private Number weightLifted;
+    private Integer weightLifted;
 
     private String description;
 

@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import './status.css';
+import Swal from 'sweetalert2';
 
 const ShareStatus = () => {
   const [formData, setFormData] = useState({
     distanceRan: '',
-    pushups: '',
+    pushupsCompleted: '',
     weightLifted: '',
     description: ''
   });
@@ -24,36 +25,63 @@ const ShareStatus = () => {
     setErrors((prev) => ({ ...prev, [name]: '' }));
   };
 
- 
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log('Meal Plan Data:', formData);
+      try {
+        const response = await fetch('http://localhost:8080/status/add', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+        if (response.ok) {
+          console.log('Form Data:', formData);
+          Swal.fire({
+            icon: 'success',
+            title: 'Status Shared Successfully!',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          setFormData({
+            distanceRan: '',
+            pushupsCompleted: '',
+            weightLifted: '',
+            description: ''
+          });
+        } else {
+          console.error('Failed to share status:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error sharing status:', error.message);
+      }
     }
   };
+  
+  
 
   const validateForm = () => {
     let isValid = true;
     const newErrors = {};
 
     if (!formData.distanceRan.trim()) {
-      newErrors.distanceRan = 'Please enter ingredients';
+      newErrors.distanceRan = 'Please enter the distance that you ran';
       isValid = false;
     }
 
-    if (!formData.pushups.trim()) {
-      newErrors.pushups = 'Please enter cooking instructions';
+    if (!formData.pushupsCompleted.trim()) {
+      newErrors.pushupsCompleted = 'Please enter the number of pushups';
       isValid = false;
     }
 
     if (!formData.weightLifted.trim()) {
-      newErrors.weightLifted = 'Please enter a description';
+      newErrors.weightLifted = 'Please enter maximum weight lifted';
       isValid = false;
     }
 
     if (!formData.description.trim()) {
-      newErrors.description = 'Please upload an image';
+      newErrors.description = 'Enter a description of your current status';
       isValid = false;
     }
 
@@ -62,7 +90,7 @@ const ShareStatus = () => {
   };
 
   return (
-    <div className="PlanSharing">
+    <div className="PlanSharing" style={{ backgroundImage: "./status.jpg" }}>
       <section className="flex items-center sticky top-0 bg-opacity-95 px-4">
         <KeyboardBackspaceIcon
           className="cursor-pointer"
@@ -76,23 +104,23 @@ const ShareStatus = () => {
       <div className="form-container">
         <Form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <Form.Label className="form-label">Distance Ran</Form.Label>
-            <Form.Control className="form-input" type="number" name="ingredients" value={formData.ingredients} onChange={handleChange} />
+            <Form.Label className="form-label">Distance Ran (Km)</Form.Label>
+            <Form.Control className="form-input" type="number" name="distanceRan" value={formData.distanceRan} onChange={handleChange} />
             {errors.distanceRan && <span className="error">{errors.distanceRan}</span>}
           </div>
           <div className="mb-4">
-            <Form.Label className="form-label">Pushups Completed</Form.Label>
-            <Form.Control className="form-input" type="number" name="instructions" value={formData.instructions} onChange={handleChange} />
-            {errors.pushups && <span className="error">{errors.pushups}</span>}
+            <Form.Label className="form-label">Pushups Completed (Nos)</Form.Label>
+            <Form.Control className="form-input" type="number" name="pushupsCompleted" value={formData.pushupsCompleted} onChange={handleChange} />
+            {errors.pushupsCompleted && <span className="error">{errors.pushupsCompleted}</span>}
           </div>
           <div className="mb-4">
-            <Form.Label className="form-label">Weight Lifted</Form.Label>
+            <Form.Label className="form-label">Weight Lifted (Kg)</Form.Label>
             <Form.Control className="form-input" type='number' name="weightLifted" value={formData.weightLifted} onChange={handleChange} rows={4} />
             {errors.weightLifted && <span className="error">{errors.weightLifted}</span>}
           </div>
           <div className="mb-4">
             <Form.Label className="form-label">Description</Form.Label>
-            <Form.Control className="form-input" as="textarea" value={formData.description} onChange={handleChange} />
+            <Form.Control className="form-input" as="textarea" name="description" value={formData.description} onChange={handleChange} />
             {errors.description && <span className="error">{errors.description}</span>}
           </div>
           <Button className="submit-btn" type="submit">Share Status</Button>

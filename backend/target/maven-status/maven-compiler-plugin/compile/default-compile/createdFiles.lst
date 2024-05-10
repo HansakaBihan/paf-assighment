@@ -1,6 +1,6 @@
-com/example/healthclubapi/config/CorsConfig.class
-com/example/healthclubapi/entity/Meal.class
-com/example/healthclubapi/service/MealService.class
-com/example/healthclubapi/repository/MealRepository.class
-com/example/healthclubapi/service/impl/MealServiceImpl.class
-com/example/healthclubapi/controller/MealController.class
+com\example\healthclubapi\entity\Meal.class
+com\example\healthclubapi\repository\MealRepository.class
+com\example\healthclubapi\service\MealService.class
+com\example\healthclubapi\service\impl\MealServiceImpl.class
+com\example\healthclubapi\config\CorsConfig.class
+com\example\healthclubapi\controller\MealController.class
