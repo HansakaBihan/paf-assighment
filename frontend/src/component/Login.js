@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Login.css'; // Import your CSS file for styling if needed
-import coverImage from '../assets/cover.jpg'; // Import the image using a relative path
+import coverImage from '../assets/login.jpg'; // Import the image using a relative path
 import Swal from 'sweetalert2';
 
 function LoginPage() {

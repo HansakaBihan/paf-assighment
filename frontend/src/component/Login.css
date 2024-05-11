@@ -14,6 +14,35 @@
   color: black;
 }
 
+/* Login.css */
+.image-container {
+  flex: 1;
+  background-image: url('../assets/login.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Ensure the container takes up the entire screen */
+.login-page-container {
+  display: flex;
+  height: 100vh; /* Set the container height to 100% of the viewport height */
+}
+
+/* Make sure the image container takes up the remaining space */
+.form-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Add this to center the form within the container */
+.form-container form {
+  width: 100%;
+  max-width: 400px; /* Limit the form width for better readability */
+}
+
 
 .form-container {
   flex: 1;
