@@ -14,6 +14,7 @@ import FitLinkCard from "../HomeSection/FitLinkCard";
 import WorkoutStatusCard from "../WorkoutStatusCard/WorkoutStatusCard";
 import PlanSharingCard from "../PlanSharingCard/PlanSharingCard";
 import "./profile.css"; // Import your CSS file
+import Sidebar from "../Sidebar";
 
 const Profile = () => {
   const [tabValue, setTabValue] = useState("1");
@@ -43,6 +44,8 @@ const Profile = () => {
         <h1 className="profile-name">Hansaka Bihan</h1>
       </section>
 
+      <Sidebar/>
+
       <section>
         <img className="cover-image" src={coverImg} alt="" />
       </section>
@@ -52,7 +55,6 @@ const Profile = () => {
           <Avatar
             className="profile-avatar"
             alt="sewmi madhu"
-            src={profileImage}
           />
           <Button
             variant="contained"
@@ -64,7 +66,7 @@ const Profile = () => {
         </div>
         <div className="profile-details">
           <div className="profile-name">
-            <h1>Hansak Bihan</h1>
+            <h1>Hansaka Bihan</h1>
             <p>@hans</p>
           </div>
           <p className="bio">

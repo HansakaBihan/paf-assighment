@@ -49,8 +49,8 @@ const FitLinkCard = () => {
           >
             <img className="profile-images" src={profileImage} alt="profile" />
             <div className="username">
-              <span className="name">Shannon Fernando</span>
-              <span className="handle">@shannon . 2m</span>
+              <span className="name">Hansaka Bihan</span>
+              <span className="handle">@hans . 2m</span>
             </div>
           </div>
           <div>

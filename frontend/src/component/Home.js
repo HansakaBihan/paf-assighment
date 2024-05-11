@@ -140,16 +140,16 @@ const Home = () => {
         <Link to="/profile">
           <div className="profile-info">
             <img src={girlPic} alt="Profile Pic" />
-            <h3>Shanon Fernando</h3>
+            <h3>Hansaka Bihan</h3>
             <p>Inspired builder</p>
             <div className="profile-stats">
               <div className="stat">
                 <i className="fas fa-user-friends"></i>
-                <span>Followers: 100</span>
+                <span>Followers: 1</span>
               </div>
               <div className="stat">
                 <i className="fas fa-heart"></i>
-                <span>Likes: 200</span>
+                <span>Likes: 6</span>
               </div>
             </div>
           </div>
