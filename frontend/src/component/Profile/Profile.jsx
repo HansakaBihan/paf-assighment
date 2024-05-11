@@ -31,6 +31,8 @@ const Profile = () => {
       console.log("users meal plans");
     } else if (newValue === 1) {
       console.log("users posts");
+    } else if (newValue === "home") {
+      navigate("/");
     }
   };
 
@@ -38,7 +40,7 @@ const Profile = () => {
     <div className="profile-container">
       <section className="header-section">
         <KeyboardBackspaceIcon className="back-icon" />
-        <h1 className="profile-name">Shannon Fernando</h1>
+        <h1 className="profile-name">Hansaka Bihan</h1>
       </section>
 
       <section>
@@ -62,8 +64,8 @@ const Profile = () => {
         </div>
         <div className="profile-details">
           <div className="profile-name">
-            <h1>Shannon Fernanod</h1>
-            <p>@shannon</p>
+            <h1>Hansak Bihan</h1>
+            <p>@hans</p>
           </div>
           <p className="bio">
             An avid fitness enthusiast, I am committed to pushing personal limits
@@ -86,11 +88,11 @@ const Profile = () => {
           </div>
           <div className="follower-count">
             <div className="count">
-              <span>190</span>
+              <span>1</span>
               <span className="label">Following</span>
             </div>
             <div className="count">
-              <span>590</span>
+              <span>1</span>
               <span className="label">Followers</span>
             </div>
           </div>
@@ -104,6 +106,7 @@ const Profile = () => {
             aria-label="lab API tabs example"
             className="tab-list"
           >
+            <Tab label="HOME" value="home" />
             <Tab label="POSTS" value="1" />
             <Tab label="WORKOUT STATUS" value="2" />
             <Tab label="PLANS" value="3" />
