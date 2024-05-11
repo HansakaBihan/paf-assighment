@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import './status.css';
 import Swal from 'sweetalert2';
+import backgroundImage from './status.jpg'; // Import your background image
 
 const ShareStatus = () => {
   const [formData, setFormData] = useState({
@@ -44,6 +45,12 @@ const ShareStatus = () => {
             showConfirmButton: false,
             timer: 1500
           });
+  
+          // Redirect to profile after 1.5 seconds
+          setTimeout(() => {
+            navigate('/profile'); // Redirect to profile page
+          }, 1500);
+  
           setFormData({
             distanceRan: '',
             pushupsCompleted: '',
@@ -60,7 +67,6 @@ const ShareStatus = () => {
   };
   
   
-
   const validateForm = () => {
     let isValid = true;
     const newErrors = {};
@@ -90,7 +96,7 @@ const ShareStatus = () => {
   };
 
   return (
-    <div className="PlanSharing" style={{ backgroundImage: "./status.jpg" }}>
+    <div className="PlanSharing" style={{ backgroundImage: `url(${backgroundImage})`, height: "100vh" }}>
       <section className="flex items-center sticky top-0 bg-opacity-95 px-4">
         <KeyboardBackspaceIcon
           className="cursor-pointer"
@@ -101,7 +107,7 @@ const ShareStatus = () => {
       <div className="image-container">
         
       </div>
-      <div className="form-container">
+      <div className="form-container" style={{ marginTop: "100px" }}> {/* Adjust the margin top as needed */}
         <Form onSubmit={handleSubmit}>
           <div className="mb-4">
             <Form.Label className="form-label">Distance Ran (Km)</Form.Label>
@@ -123,7 +129,9 @@ const ShareStatus = () => {
             <Form.Control className="form-input" as="textarea" name="description" value={formData.description} onChange={handleChange} />
             {errors.description && <span className="error">{errors.description}</span>}
           </div>
-          <Button className="submit-btn" type="submit">Share Status</Button>
+          <div style={{ marginTop: "50px" }}> {/* Add margin to the top of the button */}
+            <Button className="submit-btn" type="submit">Share Status</Button>
+          </div>
         </Form>
       </div>
     </div>

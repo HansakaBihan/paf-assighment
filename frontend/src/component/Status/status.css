@@ -150,3 +150,11 @@
 .submit-btn:hover {
   background-color: #1b5e39;
 }
+
+.PlanSharing {
+  background-image: url('./status.jpg');
+  background-size: cover; /* Cover the entire screen */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* No repeating */
+  transform: scale(1); /* Zoom out to 80% */
+}

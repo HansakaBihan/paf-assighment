@@ -1,5 +1,111 @@
 /* profile.css */
 
+/* profile.css */
+
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.back-icon {
+  cursor: pointer;
+}
+
+.profile-name {
+  margin-left: 20px;
+  font-size: 24px;
+}
+
+.cover-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.profile-info-section {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.profile-avatar {
+  width: 150px; /* Increased width */
+  height: 150px; /* Increased height */
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.edit-profile-button {
+  background-color: #2196f3;
+  color: #fff;
+}
+
+.profile-details {
+  margin-bottom: 20px;
+}
+
+.profile-name h1 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.bio {
+  margin-bottom: 10px;
+}
+
+.additional-details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.icon {
+  margin-right: 5px;
+}
+
+.follower-count {
+  display: flex;
+  align-items: center;
+}
+
+.count {
+  margin-right: 20px;
+}
+
+.count span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.label {
+  font-size: 14px;
+  color: #666;
+}
+
+
 .profile-container {
   max-width: 800px;
   margin: 0 auto;
