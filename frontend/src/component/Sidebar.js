@@ -105,6 +105,7 @@ const Sidebar = () => {
         </li>
 
         <li className="profile">
+        <a href="/login">
           <div className="profile-details">
             <i className='bx bx-export'></i>
             <div className="name_job">
@@ -112,6 +113,7 @@ const Sidebar = () => {
             </div>
           </div>
           <i className='bx bx-log-out' id="log_out"></i>
+          </a>
         </li>
       </ul>
     </div>
